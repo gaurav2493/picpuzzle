@@ -20,16 +20,26 @@ function rotateTransform(coordinates,angle)
 {
 	var x=coordinates.x1;
 	var y=coordinates.y1;
+	var tempX,tempY;
 
-	x=x*Math.cos(angle) - y*Math.sin(angle) + 50*(Math.sin(angle) - Math.cos(angle) + 1);
-	y=x*Math.sin(angle) + y*Math.cos(angle) - 50*(Math.sin(angle) + Math.cos(angle) - 1);
+	tempX=x*Math.cos(angle) - y*Math.sin(angle) - 50*(Math.cos(angle) - Math.sin(angle) - 1);
+	tempY=x*Math.sin(angle) + y*Math.cos(angle) - 50*(Math.cos(angle) + Math.sin(angle) - 1);
 
-	coordinates.x1=Math.round(x);
-	coordinates.y1=Math.round(y);
+	coordinates.x1=Math.round(tempX);
+	coordinates.y1=Math.round(tempY);
+
+	x=coordinates.x2;
+	y=coordinates.y2;
+
+	tempX=x*Math.cos(angle) - y*Math.sin(angle) - 50*(Math.cos(angle) - Math.sin(angle) - 1);
+	tempY=x*Math.sin(angle) + y*Math.cos(angle) - 50*(Math.cos(angle) + Math.sin(angle) - 1);
+
+	coordinates.x2=Math.round(tempX);
+	coordinates.y2=Math.round(tempY);
 }
 
 /* Code for testing */
 
 initializeCoordinates();
-rotateTransform(imaginaryPlane,Math.PI/2);
+rotateTransform(imaginaryPlane,Math.PI);
 console.log(imaginaryPlane.x1+" "+imaginaryPlane.y1);
