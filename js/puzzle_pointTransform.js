@@ -38,8 +38,23 @@ function rotateTransform(coordinates,angle)
 	coordinates.y2=Math.round(tempY);
 }
 
+function horizontalFlip(coordinates)
+{
+	coordinates.y1 = 100 - coordinates.y1;
+	coordinates.y2 = 100 - coordinates.y2;
+}
+
+function verticalFlip(coordinates)
+{
+	coordinates.x1 = 100 - coordinates.x1;
+	coordinates.x2 = 100 - coordinates.x2;
+}
+
 /* Code for testing */
 
 initializeCoordinates();
-rotateTransform(imaginaryPlane,Math.PI);
-console.log(imaginaryPlane.x1+" "+imaginaryPlane.y1);
+//rotateTransform(imaginaryPlane,Math.PI);
+horizontalFlip(imaginaryPlane);
+verticalFlip(imaginaryPlane);
+
+console.log(imaginaryPlane.x1+" "+imaginaryPlane.y1 + " " + imaginaryPlane.x2+" " + imaginaryPlane.y2);
